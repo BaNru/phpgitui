@@ -1,0 +1,150 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin);
+
+/* reset v.0.003 beta :-) */
+
+/* START reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,
+abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,
+strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,
+figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
+time,mark,audio,video{margin:0;padding:0;border:0;vertical-align:baseline;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,
+header,aside{display:block;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+sup{vertical-align:text-top;}
+a,label,button,input[type='button'],input[type='checkbox'],input[type='radio'],
+input[type='image'],input[type='reset'],input[type='submit']{cursor:pointer;}
+/* END reset */
+
+/* START global */
+html,body{min-height:100%;height:100%;}
+html{background:url("bg.gif") repeat #e9eef9;}
+body{color:#464646;font:100%/150% Ubuntu, Droid Sans, Tahoma, Verdana, Arial, sans-serif;width:80%;margin: 0 auto;}
+
+a {
+	color: #33f;
+	text-decoration: none;
+}
+a:hover {
+	color: #900;
+	text-decoration: underline;
+}
+
+h1,h2,h3,h4,h5,h6 {font-weight:normal;line-height:1.5em;text-align:center;margin: 2em 0 1em;}
+h1{font-size:1.8em;line-height: 1.67em;margin: 2.1em 0 1.2em;}
+h2{font-size:1.6em;line-height: 1.873em;margin:1.9em 0 .9em;}
+h3{font-size:1.4em;line-height: 2.145em;margin:2.11em 0 1.1em;}
+h4{font-size:1.2em;}
+h5{font-size:1em;}
+h6{font-size:.8em;}
+
+p {
+	margin-top: 1.5em;
+	text-align:justify;
+
+	-moz-hyphens: auto;
+	-khtml-hyphens: auto;
+	-webkit-hyphens: auto;
+	-o-hyphens: auto;
+	-ms-hyphens: auto;	
+	hyphens: auto;
+}
+
+table, tr, th, td {border: 1px solid #D6D6D6;}
+table {margin: 10px 0;}
+th {background-color: #F5F5F5;}
+th, td {padding: 2px 10px;}
+
+hr {
+	border: 1px dashed #464646;
+	border-width: 1px 0 0;
+
+	margin-top: 1.5em;
+	margin-top: -moz-calc(1.5em - 1px);
+	margin-top: -khtml-calc(1.5em - 1px);
+	margin-top: -webkit-calc(1.5em - 1px);
+	margin-top: -o-calc(1.5em - 1px);
+	margin-top: -ms-calc(1.5em - 1px);
+	margin-top: calc(1.5em - 1px);
+}
+/* END global */
+
+
+header nav {margin: 2em 0}
+header nav li {display: inline-block;list-style: none;padding: 0 1em;}
+header nav li a {display: block;padding: 0 1em;}
+
+.column {
+	-moz-column-width: 20em;
+	-webkit-column-width: 20em;
+	column-width: 20em;
+	
+	-moz-column-gap: 3em;
+	-webkit-column-gap: 3em;
+	column-gap: 3em;
+}
+.two_column li {
+	list-style: none;
+	width: 50%;
+	display: inline-block
+}
+
+p:first-child {margin-top:0;}
+
+footer{margin: 1.5em 0 3em 0;}
+footer a:first-child{display:block;text-align:center;background-color:rgba(128, 128, 128, 0.1);color:#666;}
+footer a:first-child:hover{background-color:rgba(128, 128, 128, 0.3);color:#464646;text-decoration:none;}
+
+pre {
+	border-width: 1px 0;
+	border-color: #B6B6B6;
+	border-style: dashed;
+	margin-bottom: 17pt;
+	overflow: auto;
+	padding: 1.5em 2em;
+	line-height: 1.5em;
+	font-size: 1em;
+	background:repeating-linear-gradient(
+				rgba(251, 251, 251, 0.9) 0em,
+				rgba(251, 251, 251, 0.9) 1.4em,
+				rgba(225, 225, 225, 0.9) 1.5em
+	) local;
+}
+
+/* DIFF */
+.diff-header {color: #333;font-weight: bold;}
+.diff-sub-header {color: #33a;}
+.diff-added {color: #3a3;}
+.diff-deleted {color: #a33;}
+.diff-empty {
+	display: inline-block;
+	background-color: red;
+}
+/* /DIFF */
+
+/* output color */
+.color1 {color:#BF9200;}
+.color2 {color:#2F7976;}
+.color3 {color:#073;}
+.color4 {color:#C82829;}
+.color5 {color:#4B78B2;}
+/* /output color */
+
+
+/* global */
+.r{float:right;} /* box left */
+.l{float:left;} /* box right */
+
+.t_l {text-align: left;} /* text left */
+.t_r {text-align: right;} /* text right */
+.t_c {text-align: center;} /* text center */
+.t_b {font-weight: bold;} /* text bold */
+
+.lh_0 {line-height: 0;} 
+
+.clear {clear: both;}
+.h {display:none;} /* hide */
+/* /global */
