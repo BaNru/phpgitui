@@ -8,7 +8,6 @@
  * @link https://github.com/BaNru
  *
  * @todo 
- *     - Объединить однотипные запросы
  *     - FETCH
  *     - Протестировать работу с удалёнными файлами
  */
@@ -50,30 +49,31 @@ require_once "functions.php";
 
 <?php
 
-if (isset($_GET['add'])){
-	$command = 'git add '.urldecode($_GET['add']);
-	$get_ = executeCommand($command);
-	show(['ADD', $command], $get_[0],$get_);
+/*
+ * Типа роутер
+ *
+ * $_GET name => [command,h1(header)]
+ */
+$groute = [
+	'add'		=> ['add','ADD'],
+	'rm'		=> ['rm','REMOVE'],
+	'reset'		=> ['reset HEAD','RESET'],
+	'checkout'	=> ['checkout --','CHECKOUT'],
+	'status'	=> ['status','STATUS'],
+
+];
+if(!empty($_GET)){
+	$t_get = array_keys($_GET)[0];
+	if (array_key_exists($t_get,$groute)){
+		$command = 'git '.$groute[$t_get][0].' '.urldecode($_GET[$t_get]);
+		$get_ = executeCommand($command);
+		show([$groute[$t_get][1], $command], $get_[0],$get_);
+	}
 }
-if (isset($_GET['rm'])){
-	$get_ = executeCommand('git rm '.urldecode($_GET['rm']));
-	show(['REMOVE',urldecode($_GET['rm'])], $get_[0],$get_);
-}
+
 if (isset($_GET['diff'])){
 	$get_ = executeCommand('git diff '.urldecode($_GET['diff']));
 	show('DIFF: '.urldecode($_GET['diff']), formatDiff(htmlspecialchars($get_[0])),$get_);
-}
-if (isset($_GET['reset'])){
-	$get_ = executeCommand('git reset HEAD '.urldecode($_GET['reset']));
-	show('RESET: '.urldecode($_GET['reset']), $get_[0], $get_);
-}
-if (isset($_GET['checkout'])){
-	$get_ = executeCommand('git checkout -- '.urldecode($_GET['checkout']));
-	show('RESET: '.urldecode($_GET['checkout']), $get_[0], $get_);
-}
-if(isset($_GET['status'])){
-	$get_ = executeCommand('git status');
-	show('STATUS', $get_[0], $get_);
 }
 if(isset($_GET['log'])){
 	$get_ = executeCommand('git log');
