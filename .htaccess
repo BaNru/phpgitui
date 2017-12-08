@@ -1,0 +1,8 @@
+### Доступ CMD GIT
+#AuthUserFile /absolute/path/.htpasswd
+#AuthName "Private access"
+#AuthType Basic
+#Require valid-user
+
+### Закрыть доступ к папке
+deny from all
