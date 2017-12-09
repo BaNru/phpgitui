@@ -43,6 +43,7 @@ require_once "functions.php";
 		<li><a href="?status">status</a></li>
 		<li><a href="?log">log</a></li>
 		<li><a href="?gitignore">gitignore</a></li>
+		<li><a href="?helper">helper</a></li>
 		<li><a href="?raw">raw</a></li>
 	</ol></nav>
 </header>
@@ -122,6 +123,40 @@ if (isset($_GET['commit'])){
 		}
 	}
 }
+
+if (isset($_GET['helper'])){
+	?>
+	<ol>
+		<li>
+			<a href="?helper=gitignoreline">Создать инлайновые исключения</a>
+		</li>
+	</ol>
+	<?php
+	if($_GET['helper'] === "gitignoreline"){
+		$gitattributes = '../.gitattributes';
+		if (!file_exists($gitattributes)) {
+			file_put_contents($gitattributes, '* filter=gitignore');
+			echo "Файл .gitattributes не найден. Создан файл <strong>.gitattributes</strong> с записью '<strong>* filter=gitignore</strong>'<br>
+Теперь вы можете игнорировать строки, добавив в конце строки #gitignore";
+		} else {
+			echo "Файл .gitattributes найден.<br>";
+			$file = file_get_contents($gitattributes);
+			if(preg_match("~filter=gitignore~",$file)){
+				echo "В файле найдены фильтры. Изменения не внесены!<br>";
+			} else {
+				file_put_contents($gitattributes, $file.PHP_EOL.'* filter=gitignore'.PHP_EOL);
+				echo "В файл добален фильтр '<strong>* filter=gitignore</strong>'.<br>";
+			}
+		}
+		$command_1 = 'git config filter.gitignore.clean "sed \'/#gitignore$/\'d"';
+		$get_1 = executeCommand($command_1);
+		show(['', $command_1], $get_1[0],$get_1);
+		$command_2 = 'git config filter.gitignore.smudge cat';
+		$get_2 = executeCommand($command_2);
+		show(['', $command_2], $get_2[0],$get_2);
+	}
+}
+
 if (isset($_GET['raw'])){
 	if (!empty($_POST)){
 		foreach ($_POST as $key => $item) {
