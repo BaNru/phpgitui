@@ -204,7 +204,7 @@ show('Запрос e-mail:', $get_[0], $get_);
 }
 
 if(isset($_GET['update'])){
-	$get_ = executeCommand('cd phpgitui/ && git pull https://github.com/BaNru/phpgitui.git');
+	$get_ = executeCommand('cd phpgitui/ && git pull https://github.com/BaNru/phpgitui.git master');
 	show('Обновление PHP GIT UI:', $get_[0], $get_);
 }
 
