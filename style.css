@@ -94,7 +94,8 @@ header nav li a {display: block;padding: 0 1em;}
 
 p:first-child {margin-top:0;}
 
-footer{margin: 1.5em 0 3em 0;}
+footer{margin: 3em 0;}
+footer li {list-style: none;}
 footer a:first-child{display:block;text-align:center;background-color:rgba(128, 128, 128, 0.1);color:#666;}
 footer a:first-child:hover{background-color:rgba(128, 128, 128, 0.3);color:#464646;text-decoration:none;}
 
