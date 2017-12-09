@@ -97,7 +97,11 @@ function formatDiff($output){
  */
 function show($h,$text,$r,$rw=false){
 	if(is_array($h)){
-		echo '<h1>'.$h[0].'</h1>';
+		if(!empty($h[0])){
+			echo '<h1>'.$h[0].'</h1>';
+		} else {
+			echo '<br>';
+		}
 		echo '<small style="padding-left:2em">> '.$h[1].'</small>';
 	} else {
 		echo '<h1>'.$h.'</h1>';
