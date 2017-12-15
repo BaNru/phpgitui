@@ -209,7 +209,6 @@ if(isset($_GET['update'])){
 	show('Обновление PHP GIT UI:', $get_[0], $get_);
 }
 
-/*Добавлен эффект (анимация) золотого свечения на кнопку "в корзину"*/
 if(isset($_GET['gitignore'])){
 	$gitignore = '.gitignore';
 	if (!file_exists($gitignore)) {
