@@ -202,6 +202,6 @@ function git_status(){
  * Команда git log
  */
 function git_log(){
-	$log = executeCommand('git log -3  --graph --abbrev-commit --decorate --all --pretty=format:"<strong class="color1">%d%n</strong> <strong class="color2">%h</strong> <strong class="color3">%an</strong> - <span class="color5">%aD</span> (%ar)<strong class="color1">%n</strong> <span class="color4">%s</span>"');
+	$log = executeCommand('git log -3  --graph --abbrev-commit --decorate --all --pretty=format:"<strong class="color1">%d%n</strong> <strong><a href="?checkout_c=%h">%h</a></strong> <strong class="color3">%an</strong> - <span class="color5">%aD</span> (%ar)<strong class="color1">%n</strong> <span class="color4">%s</span>"');
 	show('LOG',$log[0],$log);
 }

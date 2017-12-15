@@ -60,6 +60,7 @@ $groute = [
 	'rm'		=> ['rm','REMOVE'],
 	'reset'		=> ['reset HEAD','RESET'],
 	'checkout'	=> ['checkout --','CHECKOUT'],
+	'checkout_c'=> ['checkout','CHECKOUT'],
 	'status'	=> ['status','STATUS'],
 
 ];
