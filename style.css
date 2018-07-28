@@ -114,7 +114,7 @@ pre {
 				rgba(225, 225, 225, 0.9) 1.5em
 	) local;
 }
-pre span {
+pre.status span {
 	cursor: default;
 	-ms-user-select:none;
 	-moz-user-select:none;

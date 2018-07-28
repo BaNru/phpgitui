@@ -93,9 +93,9 @@ function formatDiff($output){
  * @param string $text - Обработанный вывод
  * @param string $r - Array из executeCommand()
  * @param boolean $rw- htmlspecialchars true/false, не обязательный, по умолчанию false
- * @param boolean $options[1] - вывод комманды на экран, не обязательный, по умолчанию true
+ * @param string $class - класс для <PRE>
  */
-function show($h,$text,$r,$rw=false){
+function show($h,$text,$r,$rw=false,$class=''){
 	if(is_array($h)){
 		if(!empty($h[0])){
 			echo '<h1>'.$h[0].'</h1>';
@@ -107,13 +107,13 @@ function show($h,$text,$r,$rw=false){
 		echo '<h1>'.$h.'</h1>';
 	}
 	if ($r[1]) {
-		echo '<pre class="color4">'.trim($r[1]).'</pre> Error code: <span class="color5">'.$r[2].'</span>';
+		echo '<pre class="color4 '.$class.'">'.trim($r[1]).'</pre> Error code: <span class="color5">'.$r[2].'</span>';
 	} else {
 		if(!empty($text)){
 			if($rw){
 				$text = htmlspecialchars($text);
 			}
-			echo '<pre>'.$text.'</pre>';
+			echo '<pre class="'.$class.'">'.$text.'</pre>';
 		}
 	}
 }

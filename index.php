@@ -248,7 +248,7 @@ if(isset($_GET['gitignore'])){
 
 if (empty($_GET)){
 	$st = git_status();
-	show('Status', $st[0], $st[1]);
+	show('Status', $st[0], $st[1],false,'status');
 ?>
 	<form action="?commit" method="post">
 		<textarea name="text"></textarea>
@@ -315,7 +315,8 @@ if (empty($_GET)){
 	// document.addEventListener('keyup', function(event) {
 	// 	isShift = event.shiftKey;
 	// });
-	document.querySelector('pre').addEventListener('mousemove', function(event) {
+	var prestatus = document.querySelector('pre.status');
+	prestatus.addEventListener('mousemove', function(event) {
 		if (isClick) {
 			//event.target.checked = !isShift;
 			// if(event.target.closest('span')){
@@ -328,15 +329,13 @@ if (empty($_GET)){
 					event.target.classList.remove('select');
 				}
 			}
-			if(document.querySelector('pre .select')){
+			if(prestatus.querySelector('.select')){
 				statusbtn.classList.remove('h');
 			}else{
 				statusbtn.classList.add('h');
 			}
 		}
 	});
-	// В настоящее время STATUS первый, поэтому без классов
-	var prestatus = document.querySelector('pre');
 	prestatus.insertAdjacentHTML('afterend','<ul class="statusbtn h">'
 		+'<li data-command="add">add</li> '
 //		+'<li data-command="add --patch">patch</li> '
@@ -350,7 +349,7 @@ if (empty($_GET)){
 	statusbtn.addEventListener('click',function(e){
 		if(e.target.closest('li')){
 			var files = '';
-			document.querySelectorAll('pre .select').forEach(function(item){
+			prestatus.querySelectorAll('.select').forEach(function(item){
 				 files += item.textContent+' '
 			})
 			async function POST() {
