@@ -91,7 +91,7 @@ if(!empty($_GET)){
 
 if (isset($_GET['diff'])){
 	$get_ = executeCommand('git diff '.urldecode($_GET['diff']));
-	show('DIFF: '.urldecode($_GET['diff']), formatDiff(htmlspecialchars($get_[0])),$get_);
+	show('DIFF: '.urldecode(str_replace("^!", '', $_GET['diff'])), formatDiff(htmlspecialchars($get_[0])),$get_);
 }
 if(isset($_GET['log'])){
 	$get_ = executeCommand('git log');
