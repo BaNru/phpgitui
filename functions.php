@@ -195,7 +195,7 @@ function git_status(){
 		$newtext2 .= '<strong class="color4">Untracked</strong>:'.PHP_EOL.$newtext[2];
 	}
 
-	show('Status', $newtext2, $status);
+	return [$newtext2, $status];
 }
 
 /**

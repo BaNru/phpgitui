@@ -231,7 +231,8 @@ if(isset($_GET['gitignore'])){
 }
 
 if (empty($_GET)){
-	git_status();
+	$st = git_status();
+	show('Status', $st[0], $st[1]);
 ?>
 	<form action="?commit" method="post">
 		<textarea name="text"></textarea>
