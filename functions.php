@@ -141,21 +141,21 @@ function git_status(){
 	$text = preg_replace_callback(
 		'/^A\s\s(.*)$/m',
 		function ($m) use (&$newtext) {
-			$newtext[0] .= '  add new: <span class="color3">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a>'.PHP_EOL;
+			$newtext[0] .= '  add new:  <span class="color3" data-type="reset">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a>'.PHP_EOL;
 		},
 		$status[0]
 	);
 	$text = preg_replace_callback(
 		'/^D\s\s(.*)$/m',
 		function ($m) use (&$newtext) {
-			$newtext[0] .= '  deleted: <span class="color3">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a>'.PHP_EOL;
+			$newtext[0] .= '  deleted:  <span class="color3" data-type="reset">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a>'.PHP_EOL;
 		},
 		$status[0]
 	);
 	$text = preg_replace_callback(
 		'/^M\s\s(.*)$/m',
 		function ($m) use (&$newtext) {
-			$newtext[0] .= '  modified: <span class="color3">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a>'.PHP_EOL;
+			$newtext[0] .= '  modified: <span class="color3" data-type="reset">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a>'.PHP_EOL;
 		},
 		$status[0]
 	);
@@ -163,7 +163,7 @@ function git_status(){
 	$text = preg_replace_callback(
 		'/^\sM\s(.*)$/m',
 		function ($m) use (&$newtext) {
-			$newtext[1] .= '  modified: <span class="color4">'.$m[1].'</span> <a href="?add='.urldecode(trim($m[1])).'">add</a> <a href="?checkout='.urldecode(trim($m[1])).'">checkout</a> <a href="?diff='.urldecode(trim($m[1])).'">diff</a>'.PHP_EOL;
+			$newtext[1] .= '  modified: <span class="color4" data-type="add,checkout,diff">'.$m[1].'</span> <a href="?add='.urldecode(trim($m[1])).'">add</a> <a href="?checkout='.urldecode(trim($m[1])).'">checkout</a> <a href="?diff='.urldecode(trim($m[1])).'">diff</a>'.PHP_EOL;
 		},
 		$status[0]
 	);
@@ -171,7 +171,7 @@ function git_status(){
 	$text = preg_replace_callback(
 		'/^\sD\s(.*)$/m',
 		function ($m) use (&$newtext) {
-			$newtext[1] .= '  deleted: <span class="color4">'.$m[1].'</span> <a href="?add='.urldecode(trim($m[1])).'">add</a> <a href="?checkout='.urldecode(trim($m[1])).'">checkout</a> <a href="?rm='.urldecode(trim($m[1])).'">rm</a>'.PHP_EOL;
+			$newtext[1] .= '  deleted:  <span class="color4" data-type="rm,diff">'.$m[1].'</span> <a href="?rm='.urldecode(trim($m[1])).'">rm</a> <a href="?checkout='.urldecode(trim($m[1])).'">checkout</a>'.PHP_EOL;
 		},
 		$status[0]
 	);
@@ -179,7 +179,7 @@ function git_status(){
 	$text = preg_replace_callback(
 		'/^\?\?\s(.*)$/m',
 		function ($m) use (&$newtext) {
-			$newtext[2] .= '  <span class="color4">'.$m[1].'</span> <a href="?add='.urldecode(trim($m[1])).'">add</a></a> <a href="?checkout='.urldecode(trim($m[1])).'">checkout</a> <a href="?gitignore='.urldecode(trim($m[1])).'">gitignore</a>'.PHP_EOL;
+			$newtext[2] .= '  <span class="color4" data-type="add,diff,gitignore">'.$m[1].'</span> <a href="?add='.urldecode(trim($m[1])).'">add</a></a> <a href="?checkout='.urldecode(trim($m[1])).'">checkout</a> <a href="?gitignore='.urldecode(trim($m[1])).'">gitignore</a>'.PHP_EOL;
 		},
 		$status[0]
 	);

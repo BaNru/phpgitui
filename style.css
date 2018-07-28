@@ -114,6 +114,45 @@ pre {
 				rgba(225, 225, 225, 0.9) 1.5em
 	) local;
 }
+pre span {
+	cursor: default;
+	-ms-user-select:none;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	user-select:none;
+}
+/*::selection {
+  background: rgba(0,0,0,.1);
+}
+::-moz-selection {
+  background: rgba(0,0,0,.1);
+}*/
+pre .select {
+	background-color: rgba(0,119,51,.25);
+}
+
+pre + ul {
+	list-style: none;
+	margin: 0 2em 0;
+	position: fixed;
+	bottom: 0px;
+	background: rgba(255,255,255,.75);
+	padding: .5em;
+	box-shadow: 0px -1px 5px rgba(0,0,0,.25);
+}
+pre + ul li {
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 0 0.5em;
+	margin: 0 0.25em;
+	background: rgba(0,0,0,.05);
+	cursor: pointer;
+	font-size: 0.8em;
+}
+pre + ul li:hover {
+	border: 1px solid #999;
+	background: rgba(0,0,0,.1);
+}
 
 textarea {
 	background-color: #f9f9f9;
