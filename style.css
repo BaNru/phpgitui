@@ -18,7 +18,7 @@ sup{vertical-align:text-top;}
 a,label,button,input[type='button'],input[type='checkbox'],input[type='radio'],
 input[type='image'],input[type='reset'],input[type='submit']{cursor:pointer;}
 /* END reset */
-
+*{box-sizing:border-box;}
 /* START global */
 html,body{min-height:100%;height:100%;}
 html{background:url("bg.gif") repeat #e9eef9;}
