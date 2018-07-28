@@ -274,7 +274,15 @@ if (empty($_GET)){
 
 	git_log();
 	$gitbranch = executeCommand('git branch -v -v');
-	show('Branch', $gitbranch[0], $gitbranch);
+	$newtext = '';
+	preg_replace_callback(
+		'/(^(\s|\*)\s*)(.*?)\s([a-z0-9]{7})\s(.*?)$/m',
+		function ($m) use (&$newtext) {
+			$newtext .= $m[1].'<a href="?checkout_c='.trim(urldecode($m[3])).'">'.$m[3].'</a> <a href="?checkout_c='.urldecode(trim($m[4])).'">'.$m[4].'</a> '.$m[5].PHP_EOL;
+		},
+		$gitbranch[0]
+	);
+	show('Branch', $newtext, $gitbranch);
 	
 	$gitbranch = executeCommand('git remote -v');
 	show('Remote', $gitbranch[0], $gitbranch);
