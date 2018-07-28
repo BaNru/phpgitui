@@ -129,6 +129,9 @@ if (isset($_GET['helper'])){
 	?>
 	<ol>
 		<li>
+			<a href="?helper=resetsofthead">Удалить последний коммит</a>
+		</li>
+		<li>
 			<a href="?helper=gitignoreline">Создать инлайновые исключения</a>
 		</li>
 	</ol>
@@ -155,6 +158,10 @@ if (isset($_GET['helper'])){
 		$command_2 = 'git config filter.gitignore.smudge cat';
 		$get_2 = executeCommand($command_2);
 		show(['', $command_2], $get_2[0],$get_2);
+	}
+	if($_GET['helper'] === "resetsofthead"){
+		$get = executeCommand('git reset --soft HEAD^');
+		show(['', $command_1], $get_1[0],$get_1);
 	}
 }
 
