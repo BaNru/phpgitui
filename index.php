@@ -34,7 +34,25 @@ require_once "functions.php";
 $post = file_get_contents('php://input');
 if(!empty($post) && !isset($_GET['commit'])){
 	$json = json_decode($post);
-	$command = 'git '.$json->command.' '.$json->files;
+	if($json->command == 'patch'){
+		$command = 'git diff '.$json->data;
+		$cmd = executeCommand($command);
+		echo formatDiff(htmlspecialchars($cmd[0]));
+		exit();
+		//$command = 'git diff '.$json->data.' > '.__DIR__.'/temp.diff';
+		//header('Location: ?patch');
+	}else if($json->command == 'patchadd'){
+		file_put_contents(__DIR__.'/../.git/ADD_EDIT.temp.patch', $json->data);
+		//$cmd = executeCommand('git apply --reject --ignore-space-change --ignore-whitespace '.__DIR__.'/.git/ADD_EDIT.patch');
+		//print_r( executeCommand('GIT_EDITOR="php '.__DIR__.'/patch.php" git add -e') );
+		//print_r( executeCommand('GIT_EDITOR="echo 0" git add -e') );
+		//print_r( executeCommand('git apply --check -v '.__DIR__.'/.git/_ADD_EDIT.patch') );
+		$cmd = executeCommand('GIT_EDITOR="php '.__DIR__.'/patch.php" git add -e');
+		print_r($cmd);
+		exit();
+	}else{
+		$command = 'git '.$json->command.' '.$json->data;
+	}
 	$cmd = executeCommand($command);
 	if($cmd[2] > 0){
 		print_r($cmd);

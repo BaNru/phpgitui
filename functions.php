@@ -77,7 +77,7 @@ function formatDiff($output){
 			$lines[$key] = '<span class="diff-header">' . $line . '</span>';
 		}
 		else {
-			$lines[$key] = $line;
+			$lines[$key] = '<span>'.$line.'</span>';
 		}
 	}
 
@@ -174,6 +174,16 @@ U           U    unmerged, both modified
 !           !    ignored
 -------------------------------------------------
 */
+
+	/* Добавленные частично (patch) */
+	/* @todo переписать в нижние условия */
+	$text = preg_replace_callback(
+		'/^MM\s(.*)$/m',
+		function ($m) use (&$newtext) {
+			$newtext[0] .= '  add partly (<b class="color4">patch</b>):  <span class="color3" data-type="reset,add,diff">'.$m[1].'</span> <a href="?reset='.urldecode(trim($m[1])).'">reset</a> <a href="?add='.urldecode(trim($m[1])).'">add</a> <a href="?diff='.urldecode(trim($m[1])).'">diff</a>'.PHP_EOL;
+		},
+		$status[0]
+	);
 
 	/* Добавленные */
 	$text = preg_replace_callback(
