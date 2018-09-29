@@ -114,7 +114,7 @@ pre {
 				rgba(225, 225, 225, 0.9) 1.5em
 	) local;
 }
-pre.status span {
+pre.status span, pre.patch span {
 	cursor: default;
 	-ms-user-select:none;
 	-moz-user-select:none;
@@ -140,7 +140,7 @@ pre + ul {
 	padding: .5em;
 	box-shadow: 0px -1px 5px rgba(0,0,0,.25);
 }
-pre + ul li {
+pre + ul li, .btn {
 	display: inline-block;
 	border: 1px solid #ccc;
 	padding: 0 0.5em;
@@ -163,7 +163,7 @@ textarea {
 	line-height: 1.5em;
 	height: 8.75em;
 }
-button {
+button, .btn {
 	background-color: #ccc;
 	color: #464646;
 	border: 1px solid #999;
@@ -171,6 +171,7 @@ button {
 	line-height: 2em;
 	width: 100%;
 	margin: 0 0 2em 0;
+	text-align: center;
 }
 
 /* DIFF */
@@ -178,6 +179,7 @@ button {
 .diff-sub-header {color: #33a;}
 .diff-added {color: #3a3;}
 .diff-deleted {color: #a33;}
+.diff-comment {color: #aaa;}
 .diff-empty {
 	display: inline-block;
 	background-color: red;
