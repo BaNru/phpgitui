@@ -32,7 +32,7 @@ require_once "functions.php";
 
 // AJAX POST
 $post = file_get_contents('php://input');
-if(!empty($post) && !isset($_GET['commit'])){
+if(!empty($post) && !isset($_GET['commit']) && !isset($_GET['push'])){
 	$json = json_decode($post);
 	if($json->command == 'patch'){
 		$command = 'git diff '.$json->data;
