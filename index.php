@@ -4,12 +4,14 @@
  * PHP GIT UI
  *
  * @author BaNru <admin@g63.ru>
- * @version 0.1 pre-alpha
+ * @version 0.2 pre-alpha
  * @link https://github.com/BaNru
  *
  * @todo 
- *     - FETCH
+ *     + FETCH
+ *     + PATCH
  *     - Протестировать работу с удалёнными файлами
+ *     - diff --cached
  */
 
 // echo __DIR__;
