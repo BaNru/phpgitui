@@ -248,8 +248,12 @@ show('Запрос e-mail:', $get_[0], $get_);
 }
 
 if(isset($_GET['update'])){
-	$get_ = executeCommand('cd phpgitui/ && git pull https://github.com/BaNru/phpgitui.git master');
-	show('Обновление PHP GIT UI:', $get_[0], $get_);
+	if (!file_exists(__DIR__.'/.git')){
+		show('Обновление отключено!', 'Обновление PHP GIT UI заблокировано!', '');
+	}else{
+		$get_ = executeCommand('cd '.__DIR__.' && git pull https://github.com/BaNru/phpgitui.git master');
+		show('Обновление PHP GIT UI:', $get_[0], $get_);
+	}
 }
 
 if(isset($_GET['gitignore'])){
@@ -312,7 +316,11 @@ if (empty($_GET)){
 ?>
 <footer>
 	<nav><ol>
-		<li><a href="?update">Update PHP GIT UI</a></li>
+<?php
+	if (file_exists(__DIR__.'/.git')){
+		echo '<li><a href="?update">Update PHP GIT UI</a></li>';
+	}
+?>
 	</ol></nav>
 </footer>
 <script type='text/javascript' src='script.js'></script>
